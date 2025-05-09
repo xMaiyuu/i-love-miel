@@ -36,4 +36,10 @@ async def req(ctx, *, request: str):
     view = ClaimButton(requester=ctx.author)
     await ctx.send(content=message, view=view)
 
+@bot.event
+async def on_ready():
+    activity = discord.Activity(type=discord.ActivityType.watching, name="over requests ೀ")
+    await bot.change_presence(status=discord.Status.dnd, activity=activity)
+    print(f'Logged in as {bot.user.name}')
+
 bot.run('TOKEN')
