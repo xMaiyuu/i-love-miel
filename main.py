@@ -1,5 +1,7 @@
+import os
 import discord
 from discord.ext import commands
+from keep_alive import keep_alive  # Keeps the bot alive on Render
 
 TOKEN = os.getenv("TOKEN")
 
@@ -15,7 +17,7 @@ class ClaimButton(discord.ui.View):
         self.requester = requester
         self.claimed = False
 
-    @discord.ui.button(label="Claim", style=discord.ButtonStyle.danger)
+    @discord.ui.button(label="claim", style=discord.ButtonStyle.danger)
     async def claim(self, interaction: discord.Interaction, button: discord.ui.Button):
         role = discord.utils.get(interaction.user.roles, id=ALLOWED_ROLE_ID)
         if role is None:
@@ -42,4 +44,5 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.dnd, activity=activity)
     print(f'Logged in as {bot.user.name}')
 
-bot.run('TOKEN')
+keep_alive()  # Start web server to prevent Render from sleeping
+bot.run(TOKEN)
