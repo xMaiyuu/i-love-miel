@@ -1,6 +1,7 @@
 import os
 import discord
 from discord.ext import commands
+import keep_alive import keep_alive
 
 TOKEN = os.getenv("TOKEN")
 
@@ -46,4 +47,5 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.dnd, activity=activity)
     print(f'Logged in as {bot.user.name}')
 
+keep_alive()
 bot.run(TOKEN)
