@@ -34,7 +34,7 @@ class ClaimButton(discord.ui.View):
 
 @bot.command()
 async def req(ctx, *, request: str):
-    message = f"_ _\n　　<@&1370091989714079845>\n　୨୧　{ctx.author.mention} requested **{request}**\n-# _ _　　　upldrs, click button to claim　:z__natsugroove:\n_ _"
+    message = f"_ _\n　　<@&1370091989714079845>\n　୨୧　{ctx.author.mention} requested **{request}**\n-# _ _　　　upldrs, click button to claim　<a:z__natsugroove:1353422820335554632>\n_ _"
     view = ClaimButton(requester=ctx.author)
     await ctx.send(content=message, view=view)
 
