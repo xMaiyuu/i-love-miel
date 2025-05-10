@@ -19,7 +19,7 @@ class ClaimButton(discord.ui.View):
 
     @discord.ui.button(label="Claim", style=discord.ButtonStyle.danger)
     async def claim(self, interaction: discord.Interaction, button: discord.ui.Button):
-    role = discord.utils.get(interaction.user.roles, id=ALLOWED_ROLE_ID)
+        role = discord.utils.get(interaction.user.roles, id=ALLOWED_ROLE_ID)
     if role is None:
         await interaction.response.send_message("You don't have permission to claim this request.", ephemeral=True)
         return
